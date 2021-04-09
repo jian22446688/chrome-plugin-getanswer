@@ -1,0 +1,46 @@
+{
+  "manifest_version": 2,
+  "name": "喂，楠楠",
+  "version": "1.0",
+  "description": "想念一个人的时候，不敢打电话，因为我怕，你的一个简单的“喂'我就不知道该说什么了。",
+  "author": "Cary",
+  "icons": {
+    "48": "imgs/icon.png",
+    "128": "imgs/icon.png"
+  },
+  "browser_action": {
+    "default_icon": "imgs/icon.png",
+    "default_popup": "popup.html",
+    "default_title": "默默的喜欢你^_^"
+  },
+  "background": {
+    "page": "background.html"
+  },
+  "permissions": [
+    "tabs",
+    "webRequest",
+    "declarativeContent",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://ucollege.china-cbi.net/*",
+        "https://peixun.amac.org.cn/*"
+      ],
+      "js": ["js/jquery-1.8.3.js", "js/content-script.js"],
+      "css": ["css/custom.css"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "http://ucollege.china-cbi.net/index.php?a=studyDetail&*",
+        "https://peixun.amac.org.cn/index.php?a=studyDetail&*"
+      ],
+      "js": ["js/lookvideo.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": ["inject.js"]
+}
